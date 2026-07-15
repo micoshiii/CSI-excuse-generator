@@ -39,11 +39,15 @@ export async function pickStaticExcuse(userId: string, tier: number) {
 import { groq } from "../lib/groq";
 
 const tierPrompts: Record<number, string> = {
-  1: "Write one short, mundane, believable excuse for being late to work or missing a deadline. Keep it realistic and boring, one sentence.",
-  2: "Write one slightly inconvenient excuse for being late or missing a deadline. A bit more unusual than normal, one to two sentences.",
-  3: "Write one quirky, mildly absurd excuse for being late or missing a deadline. Should sound almost believable but a little ridiculous, two sentences.",
-  4: "Write one very unusual, dramatic excuse for being late or missing a deadline. Over the top but still loosely plausible, two to three sentences.",
-  5: "Write one completely absurd, wildly over-the-top excuse for being late or missing a deadline. No limits on ridiculousness, two to three sentences.",
+  1: "Write one short, mundane, completely believable excuse for being late or missing a deadline — something that could genuinely happen in everyday life, like traffic, an alarm, or a minor mix-up. Use simple, everyday words a normal person would say out loud. One grammatically complete sentence, 10-18 words.",
+
+  2: "Write one excuse for being late or missing a deadline that is a bit more unusual than everyday, but still believable. Use simple, everyday words a normal person would say out loud, no technical or fancy vocabulary. One or two grammatically complete sentences, 18-25 words total.",
+
+  3: "Write one quirky, mildly absurd excuse for being late or missing a deadline. It should sound almost believable at first but be a little ridiculous on closer thought. Use simple, everyday words a normal person would say out loud — avoid technical, medical, or scientific-sounding terms. The scenario must stay internally logical even though it's silly. One or two grammatically complete sentences, 22-30 words total.",
+
+  4: "Write one dramatic, very unusual excuse for being late or missing a deadline. It should be over-the-top but the scenario must still make internal sense. Use simple, everyday words a normal person would say out loud — avoid technical, medical, or scientific-sounding terms. Two grammatically complete sentences, 28-38 words total.",
+
+  5: "Write one wildly absurd, completely over-the-top excuse for being late or missing a deadline. Go all out with creativity and ridiculousness, but the scenario must remain internally logical and coherent, not nonsensical. Use simple, everyday words a normal person would say out loud — avoid technical, medical, or scientific-sounding terms, even for silly things. Two or three grammatically complete sentences, 28-40 words total.",
 };
 
 export async function generateAIExcuse(tier: number, avoidList: string[]): Promise<string> {

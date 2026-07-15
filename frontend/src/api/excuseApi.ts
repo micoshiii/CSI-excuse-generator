@@ -14,7 +14,13 @@ export async function fetchExcuse(name: string): Promise<Excuse> {
     throw new Error(errorData.error || "Failed to fetch excuse");
   }
 
-  return res.json();
+  const data = await res.json();
+
+  return {
+    text: data.excuse,
+    tier: data.tier,
+    source: data.source,
+  };
 }
 
 export async function fetchHistory(name: string): Promise<HistoryItem[]> {
